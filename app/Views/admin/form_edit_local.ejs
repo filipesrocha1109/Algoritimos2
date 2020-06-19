@@ -31,6 +31,7 @@
 					</button>
 					
 					<img src="images/logo.png" style="margin-top:2px;"/>
+					editar
 				</div>
 
 				<div id="navbar" class="navbar-collapse collapse">
@@ -61,75 +62,76 @@
 
 	    	<div class="row">
 	    		<div class="col-md-12">
-	    			<form action="/Locais/salvar" method="POST">
+					<form action="/Locais/editar" method="POST">
+						<input type="hidden" id="IDLocal" name="IDLocal" value="<%=local[0].IDLocal%>">
 						<div class="form-group">
 							<label for="titulo">Nome:</label>
-							<input type="text" class="form-control" id="NomeLocal" name="NomeLocal">
+							<input type="text" class="form-control" id="NomeLocal" name="NomeLocal" value="<%=local[0].NomeLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Numero de leitos:</label>
-							<input type="text" class="form-control" id="NumeroLeitos" name="NumeroLeitos">
+							<input type="text" class="form-control" id="NumeroLeitos" name="NumeroLeitos" value="<%=local[0].NumeroLeitos%>">
 						</div>
 						
 						<div class="form-group">
 							<label for="pwd">Nº Leitos disponíveis:</label>
-							<input type="text" class="form-control" id="NumeroLeitosDisponiveis" name="NumeroLeitosDisponiveis">
+							<input type="text" class="form-control" id="NumeroLeitosDisponiveis" name="NumeroLeitosDisponiveis" value="<%=local[0].NumeroLeitosDisponiveis%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Telefone:</label>
-							<input type="text" class="form-control" id="TelefoneLocal" name="TelefoneLocal" onkeyup="mascaraTelefone()">
+							<input type="text" class="form-control" id="TelefoneLocal" name="TelefoneLocal" onkeyup="mascaraTelefone()" value="<%=local[0].TelefoneLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Telefone (opcional):</label>
-							<input type="text" class="form-control" id="TelefoneLocalOp" name="TelefoneLocalOp" onkeyup="mascaraTelefoneOp()">
+							<input type="text" class="form-control" id="TelefoneLocalOp" name="TelefoneLocalOp" onkeyup="mascaraTelefoneOp()" value="<%=local[0].TelefoneLocalOp%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">E-mail:</label>
-							<input type="text" class="form-control" id="EmailLocal" name="EmailLocal">
+							<input type="text" class="form-control" id="EmailLocal" name="EmailLocal" value="<%=local[0].EmailLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Endereço:</label>
-							<input type="text" class="form-control" id="EnderecoLocal" name="EnderecoLocal">
+							<input type="text" class="form-control" id="EnderecoLocal" name="EnderecoLocal" value="<%=local[0].EnderecoLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Numero:</label>
-							<input type="text" class="form-control" id="NumeroLocal" name="NumeroLocal">
+							<input type="text" class="form-control" id="NumeroLocal" name="NumeroLocal"  value="<%=local[0].NumeroLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">cep:</label>
-							<input type="text" class="form-control" id="CepLocal" name="CepLocal">
+							<input type="text" class="form-control" id="CepLocal" name="CepLocal" value="<%=local[0].CepLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Bairro:</label>
-							<input type="text" class="form-control" id="BairroLocal" name="BairroLocal">
+							<input type="text" class="form-control" id="BairroLocal" name="BairroLocal" value="<%=local[0].BairroLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Cidade:</label>
-							<input type="text" class="form-control" id="CidadeLocal" name="CidadeLocal">
+							<input type="text" class="form-control" id="CidadeLocal" name="CidadeLocal" value="<%=local[0].CidadeLocal%>">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Estado:</label>
-							<input type="text" class="form-control" id="EstadoLocal" name="EstadoLocal" maxlength="2" placeholder="Ex: RS, SP, SC">
+							<input type="text" class="form-control" id="EstadoLocal" name="EstadoLocal" value="<%=local[0].EstadoLocal%>" maxlength="2" placeholder="Ex: RS, SP, SC">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Pais:</label>
-							<input type="text" class="form-control" id="PaisLocal" name="PaisLocal" maxlength="2" placeholder="Ex: BR, US, CH">
+							<input type="text" class="form-control" id="PaisLocal" name="PaisLocal" value="<%=local[0].PaisLocal%>" maxlength="2" placeholder="Ex: BR, US, CH">
 						</div>
 
 
 						<button type="submit" class="btn btn-default">Cadastrar</button>
-						</form>
+					</form>
 		    	</div>
 	    	</div>
 	    </div>
