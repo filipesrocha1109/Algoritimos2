@@ -46,13 +46,14 @@
 	    	<div class="row">
 	    		<div class="col-md-12">
 	    			<div class="noticia_wrapper">
-		    			<span class="noticia_autor"><%=local[0].NomeLocal%></span>
 		    			<a class="noticia_titulo"><%=local[0].NomeLocal%></a>
-		    			<span class="noticia_data"><%//=noticia[0].data_noticia%></span>
-		    			<br />
-		    			<p class="noticia_resumo">
-		    				<%//=noticia[0].noticia%>
-						</p>
+		    			<span class="noticia_autor"><%= local[0].EnderecoLocal %>, <%= local[0].NumeroLocal%> - <%= local[0].BairroLocal %> , <%= local[0].CidadeLocal %> - <%= local[0].EstadoLocal %> - <%= local[0].PaisLocal %></span>		    					
+						<% if(local[0].CepLocal){%><span class="noticia_data"> Cep: <%= local[0].CepLocal %></span><%}%>
+						<span class="noticia_data"> Número de Leitos disponiveis: <%= local[0].NumeroLeitosDisponiveis %></span>
+						<span class="noticia_data"> Telefone: <%= local[0].TelefoneLocal %></span>
+						<span class="noticia_data"> E-mail: <%= local[0].EmailLocal %></span>
+						<span class="noticia_data"> Leitos disponiveis: <%= local[0].NumeroLeitosDisponiveis %></span>
+		    			<p class="noticia_resumo"></p>
 						<a href="editLocal?IDLocal=<%=local[0].IDLocal%>">Editar</a>
 		    		</div>
 		    	</div>
