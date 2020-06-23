@@ -15,7 +15,7 @@ module.exports.local = function(application, req, res){
 
     var IDLocal = req.query
 
-    console.log(req.query)
+    // console.log(req.query)
     
     LocaisDAO.getLocal(IDLocal, function(error,result){
         res.render("Locais/Local", {local : result, login : req.session.login })

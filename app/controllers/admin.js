@@ -26,7 +26,7 @@ module.exports.Locais_salvar = function(application, req, res){
 
     var erros = req.validationErrors();
 
-    console.log(erros) 
+    //console.log(erros) 
 
     if(erros){
        res.render('admin/form_add_local', {validacao: erros,  local: local});
@@ -71,7 +71,12 @@ module.exports.Locais_editar = function(application, req, res){
 }
 
 module.exports.loginAdd = function(application, req, res){
-    res.render('admin/login');
+
+    if(req.session.login){
+        res.redirect('/');
+    }else{
+        res.render('admin/login');
+    }    
 }
 
 module.exports.login = function(application, req, res){
@@ -88,8 +93,6 @@ module.exports.login = function(application, req, res){
        if (result[0]){
         //console.log(result[0].ID)
         req.session.login = result[0].ID
-        //console.log(req.session.login);
-        
         //console.log('manda pra home')
         res.redirect('/');
 
