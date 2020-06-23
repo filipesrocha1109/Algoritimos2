@@ -4,7 +4,7 @@ module.exports.locais = function(application, req, res){
     var LocaisDAO = new application.app.models.LocaisDAO(connection);
 
     LocaisDAO.getLocais( function(error,result){
-        res.render("Locais/Locais", {locais : result})
+        res.render("Locais/Locais", {locais : result, login : req.session.login})
     });
 }
 
@@ -18,6 +18,6 @@ module.exports.local = function(application, req, res){
     console.log(req.query)
     
     LocaisDAO.getLocal(IDLocal, function(error,result){
-        res.render("Locais/Local", {local : result})
+        res.render("Locais/Local", {local : result, login : req.session.login })
     });
 }

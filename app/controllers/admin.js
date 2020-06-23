@@ -1,7 +1,11 @@
 module.exports.formulario_inclusao_local = function(application, req, res){
-    res.render('admin/form_add_local', { validacao : {}, local : {} });
+    if(req.session.login){
+        res.render('admin/form_add_local', { validacao : {}, local : {}, });
+    }else{
+        res.redirect('/admin');
+    }
+    
 }
-
 
 module.exports.Locais_salvar = function(application, req, res){
     var local = req.body;
@@ -45,14 +49,14 @@ module.exports.edtLocal = function(application, req, res){
 
     var IDLocal = req.query
 
-   // console.log(req.query)
-    
-    LocaisDAO.getLocal(IDLocal, function(error,result){
-
-        //console.log(result)
-
-        res.render("admin/form_edit_local", {validacao : {},local : result})
-    });
+    if(req.session.login){
+        LocaisDAO.getLocal(IDLocal, function(error,result){
+            res.render("admin/form_edit_local", {validacao : {},local : result})
+        });
+    }else{
+        res.redirect('/admin');
+    }
+      
 }
 
 module.exports.Locais_editar = function(application, req, res){
@@ -64,4 +68,42 @@ module.exports.Locais_editar = function(application, req, res){
     LocaisModel.editarLocal(local, function(error, result){
         res.redirect('/Locais');
     });
+}
+
+module.exports.loginAdd = function(application, req, res){
+    res.render('admin/login');
+}
+
+module.exports.login = function(application, req, res){
+    // referencia de conexão com o banco
+    var connection = application.config.dbconnection();
+    var LoginDAO = new application.app.models.LoginDAO(connection);
+
+    var Usuarios = req.body
+
+    //console.log(Usuarios)
+    
+   LoginDAO.login(Usuarios, function(error,result){
+       //console.log( result)
+       if (result[0]){
+        //console.log(result[0].ID)
+        req.session.login = result[0].ID
+        //console.log(req.session.login);
+        
+        //console.log('manda pra home')
+        res.redirect('/');
+
+       }else{
+        //console.log('manda pra login')
+        res.redirect('/admin?erro');
+       }       
+   });
+  
+}
+
+module.exports.logout = function(application, req, res){
+    
+    req.session.login = null
+
+    res.redirect('/');
 }

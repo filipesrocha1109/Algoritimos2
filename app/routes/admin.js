@@ -17,4 +17,16 @@ module.exports = function(application){
         application.app.controllers.admin.Locais_editar(application, req, res);
     });
 
+    application.get('/admin', function(req,res){
+        application.app.controllers.admin.loginAdd(application, req, res);
+    });
+
+    application.post('/login/vericar', function(req,res){
+        application.app.controllers.admin.login(application, req, res);
+    });
+
+    application.get('/logout', function(req,res){
+        application.app.controllers.admin.logout(application, req, res);
+    });
+
 }

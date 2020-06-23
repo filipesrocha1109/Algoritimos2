@@ -2,6 +2,7 @@ var express = require('express');
 var consign = require('consign');
 var bodyParser = require('body-parser');
 var Validator = require('express-validator')
+var session = require('express-session')
 
 
 var app = express();
@@ -13,6 +14,12 @@ app.set('views', './app/views');
 // deixa arquivos publicos visivei em todas camadas da apçicação
 // permite que import os memsmo apartir da raiz
 app.use(express.static('./app/public'));
+
+app.use(session({
+	secret: "user_id",
+	resave: true,
+	saveUninitialized: true
+}));
 
 // pega os retornos e transforma em JSON
 app.use(bodyParser.urlencoded({extended:true}));

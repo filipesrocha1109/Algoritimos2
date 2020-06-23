@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Login</h1>
+    <form action="/login/vericar" method="POST">
+      <input name="usuario" type="text" /><br />
+      <input name="senha" type="password" /><br />
+      <input type="submit" value="Login" />
+    </form>
+      <p id="erro" style="display: none;">
+        <label style="color:Red">Usuario Invalido</label>
+      </p>
+  </body>
+  <script>
+    var url_atual = window.location.href;
+    resultado = url_atual.substring(url_atual.indexOf("?") + 1);
+
+    if(resultado === "erro"){
+      document.getElementById('erro').style.display = ""
+    }
+
+  </script>
+</html>
