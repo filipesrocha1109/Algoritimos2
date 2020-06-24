@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <body>
+  <body style="text-align: center;margin-top: 33vh;">
     <h1>Login</h1>
     <form action="/login/vericar" method="POST">
       <input name="usuario" type="text" /><br />
@@ -14,10 +14,8 @@
   <script>
     var url_atual = window.location.href;
     resultado = url_atual.substring(url_atual.indexOf("?") + 1);
-
     if(resultado === "erro"){
       document.getElementById('erro').style.display = ""
     }
-
   </script>
 </html>

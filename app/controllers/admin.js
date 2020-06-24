@@ -1,3 +1,4 @@
+/// admin Local
 module.exports.formulario_inclusao_local = function(application, req, res){
     if(req.session.login){
         res.render('admin/form_add_local', { validacao : {}, local : {}, });
@@ -21,8 +22,6 @@ module.exports.Locais_salvar = function(application, req, res){
     req.assert('CidadeLocal', 'CIDADE Inválido').notEmpty();
     req.assert('EstadoLocal', 'ESTADO Inválido').len(2);
     req.assert('PaisLocal', 'PAIS Inválido').len(2);
-
-    
 
     var erros = req.validationErrors();
 
@@ -69,6 +68,100 @@ module.exports.Locais_editar = function(application, req, res){
         res.redirect('/Locais');
     });
 }
+
+/// admin Paciente
+module.exports.formulario_inclusao_paciente = function(application, req, res){
+    if(req.session.login){
+        res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, });
+    }else{
+        res.redirect('/admin');
+    }
+    
+}
+
+module.exports.Pacientes_salvar = function(application, req, res){
+    var paciente = req.body;
+
+    req.assert('NomePaciente', 'NOME Inválido').notEmpty();
+    req.assert('StatusPaciente', 'STATUS Inválido').notEmpty();
+    req.assert('CPFPaciente', 'CPF dISPONÍVEIS Inválido').notEmpty();
+    req.assert('RGPaciente', 'RG Inválido').notEmpty();
+    req.assert('TelefonePaciente', 'TELEFONE Inválido').notEmpty();
+    req.assert('EnderecoPaciente', 'ENDEREÇO Inválido').notEmpty();
+    req.assert('BairroPaciente', 'BAIRRO Inválido').notEmpty();
+    req.assert('CidadePaciente', 'CIDADE Inválido').notEmpty();
+    req.assert('EstadoPaciente', 'ESTADO Inválido').len(2);
+    req.assert('PaisPaciente', 'PAIS Inválido').len(2);
+
+    var erros = req.validationErrors();
+
+    //console.log(erros) 
+
+    if(erros){
+       res.render('admin/form_add_paciente', {validacao: erros,  paciente: paciente});
+       return;
+    }
+
+    var connection = application.config.dbconnection();
+    var PacientesModel = new application.app.models.PacientesDAO(connection);
+
+    PacientesModel.salvarPaciente(paciente, function(error, result){
+        res.redirect('/Pacientes');
+    });
+}
+
+
+module.exports.edtPaciente = function(application, req, res){
+    // referencia de conexão com o banco
+    var connection = application.config.dbconnection();
+    var PacientesDAO = new application.app.models.PacientesDAO(connection);
+
+    var Paciente = req.query
+
+    if(req.session.login){
+        PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
+            res.render("admin/form_edit_paciente", {validacao : {},paciente : result})
+        });
+    }else{
+        res.redirect('/admin');
+    }
+      
+}
+
+
+module.exports.Pacientes_editar = function(application, req, res){
+    var paciente = req.body;
+
+    var connection = application.config.dbconnection();
+    var PacientesModel = new application.app.models.PacientesDAO(connection);
+
+    //console.log(paciente)
+
+    PacientesModel.editarPaciente(paciente, function(error, result){
+        res.redirect('/Pacientes');
+    });
+}
+
+module.exports.deletPaciente = function(application, req, res){
+    // referencia de conexão com o banco
+    var connection = application.config.dbconnection();
+    var PacientesDAO = new application.app.models.PacientesDAO(connection);
+
+    var Paciente = req.query
+
+    console.log(Paciente)
+
+    if(req.session.login){
+        PacientesDAO.deletePaciente(Paciente.IDPaciente, function(error,result){
+            res.redirect('/pacientes');
+        });
+    }else{
+        res.redirect('/admin');
+    }
+      
+}
+
+/// admin login
 
 module.exports.loginAdd = function(application, req, res){
 
