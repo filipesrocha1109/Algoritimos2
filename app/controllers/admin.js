@@ -68,7 +68,20 @@ module.exports.edtLocal = function(application, req, res){
 /// admin Paciente
 module.exports.formulario_inclusao_paciente = function(application, req, res){
     if(req.session.login){
-        res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, });
+
+        var connection = application.config.dbconnection();
+        var LocaisDAO = new application.app.models.LocaisDAO(connection);
+    
+        LocaisDAO.selectLocais( function(error,result){
+            var selects = result
+
+            console.log(selects)
+
+            res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, selects : selects });
+            
+        });
+
+        
     }else{
         res.redirect('/admin');
     }

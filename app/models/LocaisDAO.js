@@ -44,6 +44,9 @@ LocaisDAO.prototype.get5UltimosLocais = function(callback){
     this._connection.query('SELECT * FROM locaisatendimento ORDER BY CreatedOnLocal DESC LIMIT 5' ,callback ); 
 }
 
+LocaisDAO.prototype.selectLocais = function( callback ){
+    this._connection.query( 'SELECT IDlocal, NomeLocal FROM locaisatendimento ;' , callback ); 
+}
 
 module.exports = function(){
 
