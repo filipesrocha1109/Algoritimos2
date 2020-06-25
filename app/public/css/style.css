@@ -44,3 +44,52 @@ a:hover{
 	background:#FFF;
 	padding:20px;
 }
+
+.form-group{
+	display: flex;
+}
+	
+.col-md-12{
+	max-width: 60vw;
+	margin-left: 10%;
+}
+
+.form-group label:first-child{
+	width: 200px;
+	text-align: right;
+	padding-right: 15px;
+	justify-content:center;
+	padding-top: 7px;
+
+}
+
+.btn-add{
+	margin-left: 19vw;
+    width: 27vw;
+	margin-bottom: 31px;	
+	background-color: rgb(47, 108, 221);
+	color: white;
+	font-weight: bold;
+}
+
+.btn-edit{
+	background-color: rgb(59, 207, 29);
+	color: white;
+	font-weight: bold;
+	width: 140px;
+}
+
+.btn-delet{
+	background-color: rgb(209, 30, 30);
+	color: white;
+	font-weight: bold;
+	width: 140px;
+}
+
+.form-group select{
+	width: -webkit-fill-available;
+    border-radius: 4px;
+    height: 37px;
+    color: #555;
+    border-color: #CCC;
+}

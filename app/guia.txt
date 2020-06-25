@@ -1,5 +1,4 @@
-- fazer consistencias add OK
-- fazer put 
-- fazer login 
-- fazer usuario 
+- salvar hospital X usuario 
+- quando editar apagar o registro anterior
+- validação selecione
 - mostrar dados na home 

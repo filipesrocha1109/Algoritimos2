@@ -95,7 +95,7 @@ module.exports.Pacientes_salvar = function(application, req, res){
     req.assert('StatusPaciente', 'STATUS Inválido').notEmpty();
     req.assert('CPFPaciente', 'CPF dISPONÍVEIS Inválido').notEmpty();
     req.assert('RGPaciente', 'RG Inválido').notEmpty();
-    req.assert('TelefonePaciente', 'TELEFONE Inválido').notEmpty();
+    req.assert('TelefonePaciente', 'TELEFONE Inválido').len(14, 15);
     req.assert('EnderecoPaciente', 'ENDEREÇO Inválido').notEmpty();
     req.assert('BairroPaciente', 'BAIRRO Inválido').notEmpty();
     req.assert('CidadePaciente', 'CIDADE Inválido').notEmpty();
@@ -137,9 +137,23 @@ module.exports.edtPaciente = function(application, req, res){
     var Paciente = req.query
 
     if(req.session.login){
-        PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
-            res.render("admin/form_add_paciente", {validacao : {},paciente : result[0]})
+
+        var connection = application.config.dbconnection();
+        var LocaisDAO = new application.app.models.LocaisDAO(connection);
+    
+        LocaisDAO.selectLocais( function(error,result){
+            var selects = result
+
+            console.log(selects)
+
+            //res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, selects : selects });
+
+            PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
+                res.render("admin/form_add_paciente", {validacao : {},paciente : result[0], selects : selects});
+            });
+            
         });
+
     }else{
         res.redirect('/admin');
     }

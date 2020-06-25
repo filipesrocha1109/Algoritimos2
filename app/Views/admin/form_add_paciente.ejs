@@ -63,38 +63,58 @@
 	    		<div class="col-md-12">
 					<form action="/Pacientes/salvar" method="POST">
 						<input type="hidden" id="IDPaciente" name="IDPaciente" value="<%=paciente.IDPaciente%>">
+						<h1 style="text-align: center; margin-left: 7vw;margin-bottom: 25px;"><%if(paciente.IDPaciente){%> EDITAR PACIENTE <%}else{%> ADICIONAR PACIENTE<%}%></h1>
+						
+						<div class="form-group">
+							<label for="pwd">Status:</label>
+							<select name="StatusPaciente" id="StatusPaciente">
+								<option value="-">selecione </option>
+								<option value="DOMICILIAR" <%if(paciente.StatusPaciente === 'DOMICILIAR'){%> <%=" selected "%> <%}%>>DOMICILIAR </option>
+								<option value="HOSPITALIZADO" <%if(paciente.StatusPaciente === 'HOSPITALIZADO'){%> <%=" selected "%> <%}%> >HOSPITALIZADO </option>
+								<option value="UTI" <%if(paciente.StatusPaciente === 'UTI'){%> <%=" selected "%> <%}%> >UIT </option>
+								<option value="MORTO" <%if(paciente.StatusPaciente === 'MORTO'){%> <%=" selected "%> <%}%> >MORTO </option>								
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Hospital:</label>
+							<select name="hospital" id="hospital">
+								<option value="-"> SELECIONE </option>
+								<%for (i=0; i<selects.length ; i++ ){ %>
+								<option value="<%=selects[i].idLocal%>"><%=selects[i].NomeLocal %></option> 
+								<%}%>
+							</select>
+						</div>
+						
 						<div class="form-group">
 							<label for="titulo">Nome:</label>
 							<input type="text" class="form-control" id="NomePaciente" name="NomePaciente" value="<%=paciente.NomePaciente%>">
 						</div>
-
-						<div class="form-group">
-							<label for="pwd">Status:</label>
-							<input type="text" class="form-control" id="StatusPaciente" name="StatusPaciente" value="<%=paciente.StatusPaciente%>">
-						</div>
-
-						
+	
 						<div class="form-group">
 							<label for="pwd">CPF:</label>
-							<input type="text" class="form-control" id="CPFPaciente" name="CPFPaciente" value="<%=paciente.CPFPaciente%>">
+							<input type="text" class="form-control" id="CPFPaciente" name="CPFPaciente" value="<%=paciente.CPFPaciente%>" onkeyup="mascaraCPF()" maxlength="14">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">RG:</label>
-							<input type="text" class="form-control" id="RGPaciente" name="RGPaciente"  value="<%=paciente.RGPaciente%>">
+							<input type="text" class="form-control" id="RGPaciente" name="RGPaciente"  value="<%=paciente.RGPaciente%>"  maxlength="10">
+						</div>
+
+						<div class="form-group">
+							<label for="pwd">Idade:</label>
+							<input type="number" class="form-control" id="IdadePaciente" name="IdadePaciente" value="<%=paciente.IdadePaciente%>" maxlength="3" min="0" max="150" maxlength="3">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Telefone:</label>
-							<input type="text" class="form-control" id="TelefonePaciente" name="TelefonePaciente" onkeyup="mascaraTelefone()" value="<%=paciente.TelefonePaciente%>">
+							<input type="text" class="form-control" id="TelefonePaciente" name="TelefonePaciente" onkeyup="mascaraTelefone()" value="<%=paciente.TelefonePaciente%>" maxlength="15"> 
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Endereço:</label>
 							<input type="text" class="form-control" id="EnderecoPaciente" name="EnderecoPaciente" value="<%=paciente.EnderecoPaciente%>">
 						</div>
-
-						
 
 						<div class="form-group">
 							<label for="pwd">Bairro:</label>
@@ -116,7 +136,7 @@
 							<input type="text" class="form-control" id="PaisPaciente" name="PaisPaciente" value="<%=paciente.PaisPaciente%>">
 						</div>
 
-						<button type="submit" class="btn btn-default">Cadastrar</button>
+						<button type="submit" class="btn btn-default btn-add">Cadastrar</button>
 						</form>
 		    	</div>
 	    	</div>
@@ -134,6 +154,22 @@
 				if(telefone.value.length == 9 ){
 					telefone.value = telefone.value + "-"
 				}
+				
+			}
+
+			function mascaraCPF(){
+				//onkeyup="mascaraCPF()"
+			
+				var telefone = document.getElementById('CPFPaciente')
+				if(telefone.value.length == 3 ){
+					telefone.value = telefone.value + "."
+				}
+				if(telefone.value.length == 7 ){
+					telefone.value = telefone.value + "."
+				}
+				if(telefone.value.length == 11 ){
+					telefone.value = telefone.value + "-"
+				}				
 				
 			}
 

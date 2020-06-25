@@ -1,72 +1,77 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+	<!DOCTYPE HTML>
+	<html lang="pt-br">
+		<head>
+			<meta charset="UTF-8">
 
-		<title>COVID-19</title>
+			<title>COVID-19</title>
+			
+			<!-- JQuery -->
+			<script src="js/jquery-2.2.1.js"></script>
+
+			<!-- bootstrap - link cdn -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		
-		<!-- JQuery -->
-		<script src="js/jquery-2.2.1.js"></script>
+			<!-- incluindo css -->
+			<link href="css/style.css" rel="stylesheet">
 
-		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	
-		<!-- incluindo css -->
-		<link href="css/style.css" rel="stylesheet">
+			<!-- favicon -->
+			<link rel="shortcut icon" href="images/favicon.ico" />
+		</head>
 
-		<!-- favicon -->
-		<link rel="shortcut icon" href="images/favicon.ico" />
-	</head>
+		<body>
 
-	<body>
+			<nav class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						
+						<img src="images/logo.png" style="margin-top:2px;"/>
+					</div>
 
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
-					<img src="images/logo.png" style="margin-top:2px;"/>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/">HOME</a></li>
+							<% if(login){%>
+								<li><a href="/logout">SAIR</a></li>	
+							<%}%>
+						</ul>
+					</div>
 				</div>
+			</nav>
 
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">HOME</a></li>
-						<% if(login){%>
-							<li><a href="/logout">SAIR</a></li>	
-						<%}%>
-					</ul>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="noticia_wrapper">
+							<a class="noticia_titulo"><%=paciente[0].NomePaciente%></a>
+							<span class="noticia_autor">CPF: <%= paciente[0].CPFPaciente %></span>		    					
+							<span class="noticia_data"> RG: <%= paciente[0].RGPaciente %></span>
+							<span class="noticia_data"> Idade: <%= paciente[0].IdadePaciente %></span>
+							<span class="noticia_data"> Status: <b><%= paciente[0].StatusPaciente %></b></span>
+							<span class="noticia_data"> Telefone: <%= paciente[0].TelefonePaciente %></span>
+							<span class="noticia_data"> Endereço: <%= paciente[0].EnderecoPaciente %></span>
+							<span class="noticia_data"> Bairro: <%= paciente[0].BairroPaciente%></span>
+							<span class="noticia_data"> Cidade: <%= paciente[0].CidadePaciente%></span>
+							<span class="noticia_data"> Estado: <%= paciente[0].EstadoPaciente%></span>
+							<span class="noticia_data"> Pais: <%= paciente[0].PaisPaciente%></span>
+
+							<p class="noticia_resumo"></p>
+							<% if(login){%>
+								<a href="editPaciente?IDPaciente=<%=paciente[0].IDPaciente%>" style="margin-right: 5px;"class="btn btn-default btn-edit">Editar Paciente</a>
+								<a href="deletePaciente?IDPaciente=<%=paciente[0].IDPaciente%>" class="btn btn-default btn-delet">Deletar Paciente</a>
+							<% }%>
+						</div>
+					</div>
 				</div>
 			</div>
-		</nav>
-
-
-	    <div class="container">
-	    	<div class="row">
-	    		<div class="col-md-12">
-	    			<div class="noticia_wrapper">
-		    			<a class="noticia_titulo"><%=paciente[0].NomePaciente%></a>
-		    			<span class="noticia_autor">CPF: <%= paciente[0].CPFPaciente %></span>		    					
-						<span class="noticia_data"> RG: <%= paciente[0].RGPaciente %></span>
-						<p class="noticia_resumo"></p>
-						<% if(login){%>
-						<p>
-							<a href="editPaciente?IDPaciente=<%=paciente[0].IDPaciente%>">Editar Paciente</a>
-						</p>
-						<p>
-							<a href="deletePaciente?IDPaciente=<%=paciente[0].IDPaciente%>">Deletar Paciente</a>
-						</p>
-						<% }%>
-		    		</div>
-				</div>
-	    	</div>
-	    </div>
-	
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	
-	</body>
-</html>
+		
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+		</body>
+	</html>
