@@ -101,10 +101,30 @@ module.exports.Pacientes_salvar = function(application, req, res){
     req.assert('CidadePaciente', 'CIDADE Inválido').notEmpty();
     req.assert('EstadoPaciente', 'ESTADO Inválido').len(2);
     req.assert('PaisPaciente', 'PAIS Inválido').len(2);
+    req.assert('IdadePaciente', 'IDADE Inválida').notEmpty();
 
     var erros = req.validationErrors();
 
-    console.log(paciente) 
+    if(paciente.HospitalID == "-"){
+        erros.push({ 
+        param: 'HospitalID',
+        msg: 'HOSPITAL Inválido',
+        value: '' 
+        })
+
+    }
+    if(paciente.StatusPaciente == "-"){
+        erros.push({ 
+        param: 'StatusPaciente',
+        msg: 'STATUS Inválido',
+        value: '' 
+        })
+
+    }
+
+    
+
+    console.log(erros) 
 
     if(erros){ 
 
