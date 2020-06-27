@@ -11,11 +11,19 @@
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	
-		<!-- incluindo css -->
-		<link href="css/style.css" rel="stylesheet">
+		
+		<% if(validacao.length > 0){%>
 
+			<link href="../css/style.css" rel="stylesheet">
+			<!-- favicon -->
+			<link rel="shortcut icon" href="../images/favicon.ico" />
+
+		<% }else{ %>
+		<!-- incluindo css -->	
+		<link href="css/style.css" rel="stylesheet">
 		<!-- favicon -->
-		<link rel="shortcut icon" href="../../public/images/favicon.ico" />
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<%}%>
 	</head>
 
 	<body>
@@ -29,8 +37,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
+					<% if(validacao.length > 0){%>
+						<img src="../images/logo.png" style="margin-top:2px;"/>
+					<%}else{%>
+						<img src="images/logo.png" style="margin-top:2px;"/>
+					<%}%>
 					
-					<img src="images/logo.png" style="margin-top:2px;"/>
 				</div>
 
 				<div id="navbar" class="navbar-collapse collapse">
@@ -78,10 +90,10 @@
 
 						<div class="form-group">
 							<label for="pwd">Hospital:</label>
-							<select name="hospital" id="hospital">
+							<select name="HospitalID" id="HospitalID">
 								<option value="-"> SELECIONE </option>
 								<%for (i=0; i<selects.length ; i++ ){ %>
-								<option value="<%=selects[i].idLocal%>"><%=selects[i].NomeLocal %></option> 
+								<option value="<%=selects[i].IDlocal%>"   <%if(paciente.HospitalID == selects[i].IDlocal ){%> <%=" selected "%> <%}%>   ><%=selects[i].NomeLocal%> </option> 
 								<%}%>
 							</select>
 						</div>

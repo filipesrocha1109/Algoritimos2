@@ -30,6 +30,7 @@ PacientesDAO.prototype.editarPaciente = function(Paciente, callback){
             "' , EstadoPaciente='"+Paciente.EstadoPaciente +
             "' , PaisPaciente='"+Paciente.PaisPaciente +
             "' , IdadePaciente='"+Paciente.IdadePaciente +
+            "' , HospitalID='"+Paciente.HospitalID +
         "' WHERE "+
             "IDPaciente='"+Paciente.IDPaciente+"'" , callback 
     );  

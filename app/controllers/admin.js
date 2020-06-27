@@ -23,10 +23,12 @@ module.exports.Locais_salvar = function(application, req, res){
     req.assert('EstadoLocal', 'ESTADO Inválido').len(2);
     req.assert('PaisLocal', 'PAIS Inválido').len(2);
 
+
     var erros = req.validationErrors();
+    
 
     if(erros){
-       res.render('admin/form_add_local', {validacao: erros,  local: local});
+       res.render('admin/form_add_local', {validacao: erros,  local: local, selects : selects });
        return;
     }
 
@@ -56,7 +58,7 @@ module.exports.edtLocal = function(application, req, res){
 
     if(req.session.login){
         LocaisDAO.getLocal(IDLocal, function(error,result){
-            res.render("admin/form_add_local", {validacao : {},local : result[0]})
+            res.render("admin/form_add_local", {validacao : {},local  : result[0]})
 
         });
     }else{
@@ -74,8 +76,6 @@ module.exports.formulario_inclusao_paciente = function(application, req, res){
     
         LocaisDAO.selectLocais( function(error,result){
             var selects = result
-
-            console.log(selects)
 
             res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, selects : selects });
             
@@ -104,28 +104,37 @@ module.exports.Pacientes_salvar = function(application, req, res){
 
     var erros = req.validationErrors();
 
-    //console.log(erros) 
+    console.log(paciente) 
 
-    if(erros){
-       res.render('admin/form_add_paciente', {validacao: erros,  paciente: paciente});
-       return;
-    }
+    if(erros){ 
 
-    var connection = application.config.dbconnection();
-    var PacientesModel = new application.app.models.PacientesDAO(connection);
+        var connection = application.config.dbconnection();
+        var LocaisDAO = new application.app.models.LocaisDAO(connection);
+    
+        LocaisDAO.selectLocais( function(error,result){
+            var selects = result
 
-
-    if(paciente.IDPaciente){
-        PacientesModel.editarPaciente(paciente, function(error, result){
-            res.redirect('/Pacientes');
+            res.render('admin/form_add_paciente', { validacao: erros,  paciente: paciente, selects : selects });
+            
         });
 
     }else{
-        PacientesModel.salvarPaciente(paciente, function(error, result){
-            res.redirect('/Pacientes');
-        });
+
+        var connection = application.config.dbconnection();
+        var PacientesModel = new application.app.models.PacientesDAO(connection);
+
+
+        if(paciente.IDPaciente){
+            PacientesModel.editarPaciente(paciente, function(error, result){
+                res.redirect('/Pacientes');
+            });
+
+        }else{
+            PacientesModel.salvarPaciente(paciente, function(error, result){
+                res.redirect('/Pacientes');
+            });
+        }
     }
-    
 }
 
 
@@ -144,12 +153,13 @@ module.exports.edtPaciente = function(application, req, res){
         LocaisDAO.selectLocais( function(error,result){
             var selects = result
 
-            console.log(selects)
-
-            //res.render('admin/form_add_paciente', { validacao : {}, paciente : {}, selects : selects });
+            //console.log("entrou aqui")
+           // console.log(selects)
 
             PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
-                res.render("admin/form_add_paciente", {validacao : {},paciente : result[0], selects : selects});
+
+                res.render("admin/form_add_paciente", {validacao : {},paciente : result[0], selects: selects });
+                
             });
             
         });

@@ -14,9 +14,20 @@ module.exports.paciente = function(application, req, res){
     var PacientesDAO = new application.app.models.PacientesDAO(connection);
 
     var Paciente = req.query
+
+    var connection = application.config.dbconnection();
+    var LocaisDAO = new application.app.models.LocaisDAO(connection);
     
-    PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
-        //console.log(result)
-        res.render("Pacientes/Paciente", {paciente : result, login : req.session.login })
-    });
+        LocaisDAO.selectLocais( function(error,result){
+            var selects = result
+            console.log(selects)
+    
+            PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
+
+                //console.log(result)
+                res.render("Pacientes/Paciente", {paciente : result, login : req.session.login, selects: selects })
+            });
+        });
 }
+
+

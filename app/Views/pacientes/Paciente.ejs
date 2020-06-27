@@ -53,6 +53,7 @@
 							<span class="noticia_autor">CPF: <%= paciente[0].CPFPaciente %></span>		    					
 							<span class="noticia_data"> RG: <%= paciente[0].RGPaciente %></span>
 							<span class="noticia_data"> Idade: <%= paciente[0].IdadePaciente %></span>
+							<span class="noticia_data"> Hospital: <% for(i=0;i<selects.length; i++ ){%> <%if(paciente[0].HospitalID == selects[i].IDlocal ){%> <%=selects[i].NomeLocal%> <%}%> <%}%></span>
 							<span class="noticia_data"> Status: <b><%= paciente[0].StatusPaciente %></b></span>
 							<span class="noticia_data"> Telefone: <%= paciente[0].TelefonePaciente %></span>
 							<span class="noticia_data"> Endereço: <%= paciente[0].EnderecoPaciente %></span>
