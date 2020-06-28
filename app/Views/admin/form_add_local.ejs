@@ -75,7 +75,7 @@
 						<h1 style="text-align: center; margin-left: 9vw;margin-bottom: 25px;"><%if(local.IDLocal){%> EDITAR LOCAL <%}else{%> ADICIONAR LOCAL<%}%></h1>
 						<div class="form-group">
 							<label for="titulo">Nome:</label>
-							<input type="text" class="form-control" id="NomeLocal" name="NomeLocal" value="<%=local.NomeLocal%>">
+							<input type="text" class="form-control" id="NomeLocal" name="NomeLocal" value="<%=local.NomeLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
@@ -100,12 +100,12 @@
 
 						<div class="form-group">
 							<label for="pwd">E-mail:</label>
-							<input type="text" class="form-control" id="EmailLocal" name="EmailLocal" value="<%=local.EmailLocal%>">
+							<input type="text" class="form-control" id="EmailLocal" name="EmailLocal" value="<%=local.EmailLocal%>" >
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Endereço:</label>
-							<input type="text" class="form-control" id="EnderecoLocal" name="EnderecoLocal" value="<%=local.EnderecoLocal%>">
+							<input type="text" class="form-control" id="EnderecoLocal" name="EnderecoLocal" value="<%=local.EnderecoLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
@@ -120,22 +120,22 @@
 
 						<div class="form-group">
 							<label for="pwd">Bairro:</label>
-							<input type="text" class="form-control" id="BairroLocal" name="BairroLocal" value="<%=local.BairroLocal%>">
+							<input type="text" class="form-control" id="BairroLocal" name="BairroLocal" value="<%=local.BairroLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Cidade:</label>
-							<input type="text" class="form-control" id="CidadeLocal" name="CidadeLocal" value="<%=local.CidadeLocal%>">
+							<input type="text" class="form-control" id="CidadeLocal" name="CidadeLocal" value="<%=local.CidadeLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Estado:</label>
-							<input type="text" class="form-control" id="EstadoLocal" name="EstadoLocal" maxlength="2" placeholder="Ex: RS, SP, SC" value="<%=local.EstadoLocal%>">
+							<input type="text" class="form-control" id="EstadoLocal" name="EstadoLocal" maxlength="2" placeholder="Ex: RS, SP, SC" value="<%=local.EstadoLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Pais:</label>
-							<input type="text" class="form-control" id="PaisLocal" name="PaisLocal" maxlength="2" placeholder="Ex: BR, US, CH" value="<%=local.PaisLocal%>">
+							<input type="text" class="form-control" id="PaisLocal" name="PaisLocal" maxlength="2" placeholder="Ex: BR, US, CH" value="<%=local.PaisLocal%>" onkeyup="upperCase(this)">
 						</div>
 
 
@@ -170,6 +170,9 @@
 					telefone.value = telefone.value + "-"
 				}
 				
+			}
+			function upperCase(valor){			
+				valor.value = valor.value.toUpperCase();
 			}
 
 			

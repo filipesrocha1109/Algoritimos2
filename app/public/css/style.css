@@ -93,3 +93,15 @@ a:hover{
     color: #555;
     border-color: #CCC;
 }
+
+.btn-add-local{
+	margin-left: 11%;
+	background-color: rgb(47, 108, 221);
+	color: white;
+}
+
+.btn-add-paciente{
+	margin-left: 11%;
+	background-color: rgb(47, 108, 221);
+	color: white;
+}

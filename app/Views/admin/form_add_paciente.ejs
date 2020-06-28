@@ -80,7 +80,7 @@
 						<div class="form-group">
 							<label for="pwd">Status:</label>
 							<select name="StatusPaciente" id="StatusPaciente">
-								<option value="-">selecione </option>
+								<option value="-"> SELECIONE </option>
 								<option value="DOMICILIAR" <%if(paciente.StatusPaciente === 'DOMICILIAR'){%> <%=" selected "%> <%}%>>DOMICILIAR </option>
 								<option value="HOSPITALIZADO" <%if(paciente.StatusPaciente === 'HOSPITALIZADO'){%> <%=" selected "%> <%}%> >HOSPITALIZADO </option>
 								<option value="UTI" <%if(paciente.StatusPaciente === 'UTI'){%> <%=" selected "%> <%}%> >UIT </option>
@@ -100,7 +100,7 @@
 						
 						<div class="form-group">
 							<label for="titulo">Nome:</label>
-							<input type="text" class="form-control" id="NomePaciente" name="NomePaciente" value="<%=paciente.NomePaciente%>">
+							<input type="text" class="form-control" id="NomePaciente" name="NomePaciente" value="<%=paciente.NomePaciente%>" onkeyup="upperCase(this)"  >
 						</div>
 	
 						<div class="form-group">
@@ -110,7 +110,7 @@
 
 						<div class="form-group">
 							<label for="pwd">RG:</label>
-							<input type="text" class="form-control" id="RGPaciente" name="RGPaciente"  value="<%=paciente.RGPaciente%>"  maxlength="10">
+							<input type="text" class="form-control" id="RGPaciente" name="RGPaciente"  value="<%=paciente.RGPaciente%>"  maxlength="10" >
 						</div>
 
 						<div class="form-group">
@@ -125,27 +125,27 @@
 
 						<div class="form-group">
 							<label for="pwd">Endereço:</label>
-							<input type="text" class="form-control" id="EnderecoPaciente" name="EnderecoPaciente" value="<%=paciente.EnderecoPaciente%>">
+							<input type="text" class="form-control" id="EnderecoPaciente" name="EnderecoPaciente" value="<%=paciente.EnderecoPaciente%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Bairro:</label>
-							<input type="text" class="form-control" id="BairroPaciente" name="BairroPaciente" value="<%=paciente.BairroPaciente%>">
+							<input type="text" class="form-control" id="BairroPaciente" name="BairroPaciente" value="<%=paciente.BairroPaciente%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Cidade:</label>
-							<input type="text" class="form-control" id="CidadePaciente" name="CidadePaciente" value="<%=paciente.CidadePaciente%>">
+							<input type="text" class="form-control" id="CidadePaciente" name="CidadePaciente" value="<%=paciente.CidadePaciente%>" onkeyup="upperCase(this)">
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Estado:</label>
-							<input type="text" class="form-control" id="EstadoPaciente" name="EstadoPaciente" value="<%=paciente.EstadoPaciente%>">
+							<input type="text" class="form-control" id="EstadoPaciente" name="EstadoPaciente" value="<%=paciente.EstadoPaciente%>" onkeyup="upperCase(this)" maxlength="2"> 
 						</div>
 
 						<div class="form-group">
 							<label for="pwd">Pais:</label>
-							<input type="text" class="form-control" id="PaisPaciente" name="PaisPaciente" value="<%=paciente.PaisPaciente%>">
+							<input type="text" class="form-control" id="PaisPaciente" name="PaisPaciente" value="<%=paciente.PaisPaciente%>" onkeyup="upperCase(this)" maxlength="2">
 						</div>
 
 						<button type="submit" class="btn btn-default btn-add">Cadastrar</button>
@@ -183,6 +183,10 @@
 					telefone.value = telefone.value + "-"
 				}				
 				
+			}
+
+			function upperCase(valor){			
+				valor.value = valor.value.toUpperCase();
 			}
 
 			</script>

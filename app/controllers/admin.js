@@ -28,7 +28,7 @@ module.exports.Locais_salvar = function(application, req, res){
     
 
     if(erros){
-       res.render('admin/form_add_local', {validacao: erros,  local: local, selects : selects });
+       res.render('admin/form_add_local', {validacao: erros,  local: local });
        return;
     }
 
@@ -124,7 +124,7 @@ module.exports.Pacientes_salvar = function(application, req, res){
 
     
 
-    console.log(erros) 
+    //console.log(erros) 
 
     if(erros){ 
 
@@ -198,7 +198,7 @@ module.exports.deletPaciente = function(application, req, res){
 
     var Paciente = req.query
 
-    console.log(Paciente)
+    //console.log(Paciente)
 
     if(req.session.login){
         PacientesDAO.deletePaciente(Paciente.IDPaciente, function(error,result){
