@@ -105,3 +105,12 @@ a:hover{
 	background-color: rgb(47, 108, 221);
 	color: white;
 }
+
+.statistica{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.status{
+	padding-left: 30px;
+}
