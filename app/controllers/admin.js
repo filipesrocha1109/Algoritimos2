@@ -13,7 +13,6 @@ module.exports.Locais_salvar = function(application, req, res){
 
     req.assert('NomeLocal', 'NOME Inválido').notEmpty();
     req.assert('NumeroLeitos', 'NÚMERO DE LEITOS Inválido').notEmpty();
-    req.assert('NumeroLeitosDisponiveis', 'NÚMERO DE LEITOS dISPONÍVEIS Inválido').notEmpty();
     req.assert('TelefoneLocal', 'TELEFONE Inválido').len(14, 15);
     req.assert('EmailLocal', 'E-MAIL Inválido').notEmpty();
     req.assert('EnderecoLocal', 'ENDEREÇO Inválido').notEmpty();

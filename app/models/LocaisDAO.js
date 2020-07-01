@@ -10,6 +10,11 @@ LocaisDAO.prototype.getLocal = function(Local, callback ){
     this._connection.query( 'SELECT * FROM locaisatendimento where IDLocal ='+ Local.IDLocal , callback ); 
 }
 
+LocaisDAO.prototype.getLocalLeitosDisponiveis = function(Local, callback ){
+    //console.log(Local)
+    this._connection.query( 'select count(*) as numeroPacientes from pacientes  where hospitalID='+ Local , callback ); 
+}
+
 LocaisDAO.prototype.salvarLocal = function(local, callback){
     delete local.IDLocal 
     // mysql transforma o json no insert do banco, mas as colunas devem estar iguais aos parametros passados
@@ -22,7 +27,6 @@ LocaisDAO.prototype.editarLocal = function(local, callback){
         "UPDATE locaisatendimento  set "+
             "NomeLocal='"+local.NomeLocal +
             "' , NumeroLeitos='"+local.NumeroLeitos +
-            "' , NumeroLeitosDisponiveis='"+local.NumeroLeitosDisponiveis +
             "' , TelefoneLocal='"+local.TelefoneLocal +
             "' , TelefoneLocalOp='"+local.TelefoneLocalOp +
             "' , EmailLocal='"+local.EmailLocal +

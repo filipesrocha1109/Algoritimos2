@@ -43,7 +43,66 @@
 				</div>
 			</div>
 		</nav>
-		<h1 style="text-align: center;"> welcome a central do covid<h1>
+		<h1 style="text-align: center;"> welcome a central do covid</h1>
+			<h2> BAIRROS</h2>
+			<div>
+				<%
+				var bairros = []
+				for(var i=0;i<pacientes.length;i++){
+					bairros.push(pacientes[i].BairroPaciente)
+				}	
+
+				function onlyUnique(value, index, self) { 
+					return self.indexOf(value) == index;
+				}
+				
+				var bairros = bairros.filter( onlyUnique ); 
+				
+				for(var i=0; i<bairros.length; i++){
+				%>
+					<p><%=bairros[i]%>					
+					
+				<%	
+					var NumeroPorBairros = []
+					for(j=0;j<pacientes.length;j++){
+						if(bairros[i] == pacientes[j].BairroPaciente){
+							NumeroPorBairros.push(pacientes[i].IDPaciente)
+						}
+					}					
+					%> <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					casos: <%=NumeroPorBairros.length%> <br></p> <%
+
+				}
+				
+				%>	
+
+
+			</div>
+			<h2> HOSPITAIS</h2>
+			<% for(i=0;i<locais.length; i++){%>	
+				<p><%=locais[i].NomeLocal%>
+				
+					<%	
+					var NumeroPorHospitais = []
+					for(j=0;j<pacientes.length;j++){
+						if(locais[i].IDLocal == pacientes[j].HospitalID){
+							NumeroPorHospitais.push(pacientes[j].IDPaciente)
+						}
+					}					
+					%> <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					casos: <%=NumeroPorHospitais.length%> <br></p> <%
+
+				}
+				
+				%>
+
+			<div>
+
+			</div>
+
+
+
+
 
 	    	<div class="row ver_mais">
 	    		<a href="locais"> <button type="button" class="btn btn-default">Ver todas locais de atendimento</button></a>

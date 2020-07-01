@@ -52,10 +52,27 @@
 		    			<a class="noticia_titulo"><%=local[0].NomeLocal%></a>
 		    			<span class="noticia_autor"><%= local[0].EnderecoLocal %>, <%= local[0].NumeroLocal%> - <%= local[0].BairroLocal %> , <%= local[0].CidadeLocal %> - <%= local[0].EstadoLocal %> - <%= local[0].PaisLocal %></span>		    					
 						<% if(local[0].CepLocal){%><span class="noticia_data"> Cep: <%= local[0].CepLocal %></span><%}%>
-						<span class="noticia_data"> Número de Leitos: <%= local[0].NumeroLeitos %></span>
 						<span class="noticia_data"> Telefone: <%= local[0].TelefoneLocal %></span>
 						<span class="noticia_data"> E-mail: <%= local[0].EmailLocal %></span>
-						<span class="noticia_data"> Leitos disponiveis: <%= local[0].NumeroLeitosDisponiveis %></span>
+						<% if(login){%>	
+						<span class="noticia_data"> Número de Leitos : <%= local[0].NumeroLeitos %></span>
+						<% }%>	
+						<%if(pacientes){%>
+							<% var NumerodePacientesLocal=[]%>
+							<%for(var j = 0;j<pacientes.length;j++){ %>
+								<% if(pacientes[j].HospitalID == local[0].IDLocal ){  %>
+									<% if(pacientes[j].StatusPaciente=='HOSPITALIZADO' || pacientes[j].StatusPaciente=='UTI'){%>					
+										<% NumerodePacientesLocal.push(pacientes[j].IDPaciente)	%>
+									<%}%>										
+								<% } %>	
+							<% } %>
+						<% } %>			    					
+						<%
+						var x = NumerodePacientesLocal.length
+						var y = local[0].NumeroLeitos
+						var result = y-x						
+						%>
+						<span class="noticia_data"> Número de Leitos Disponiveis: <%=result %></span>
 						<p class="noticia_resumo"></p>
 						<% if(login){%>
 						<a href="editLocal?IDLocal=<%=local[0].IDLocal%>" class="btn btn-default btn-edit">Editar Local</a>

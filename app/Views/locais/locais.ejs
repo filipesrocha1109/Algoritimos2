@@ -52,8 +52,30 @@
 	    				<div class="col-md-12">
 	    					<div class="noticia_wrapper">
 								<a href="local?IDLocal=<%= locais[i].IDLocal %>" class="noticia_titulo"><%=locais[i].NomeLocal%></a>
-		    					<span class="noticia_autor"><%= locais[i].EnderecoLocal %>, <%= locais[i].NumeroLocal%> - <%= locais[i].BairroLocal %> , <%= locais[i].CidadeLocal %> - <%= locais[i].EstadoLocal %> - <%= locais[i].PaisLocal %></span>		    					
-		    					<span class="noticia_data"> Número de Leitos disponiveis: <%= locais[i].NumeroLeitosDisponiveis %></span>
+								<span class="noticia_autor"><%= locais[i].EnderecoLocal %>, <%= locais[i].NumeroLocal%> - <%= locais[i].BairroLocal %> , <%= locais[i].CidadeLocal %> - <%= locais[i].EstadoLocal %> - <%= locais[i].PaisLocal %></span>
+								<%if(pacientes){%>
+									<% var NumerodePacientesLocal=[]%>
+									<%for(var j = 0;j<pacientes.length;j++){ %>
+										<% if(pacientes[j].HospitalID == locais[i].IDLocal ){  %>
+											<% if(pacientes[j].StatusPaciente=='HOSPITALIZADO' || pacientes[j].StatusPaciente=='UTI'){%>					
+												<% NumerodePacientesLocal.push(pacientes[j].IDPaciente)	%>
+											<%}%>										
+										<% } %>	
+									<% } %>
+								<% } %>	
+								<% if(login){%>		    					
+								<span class="noticia_data"> Número de Leitos: <%= locais[i].NumeroLeitos %></span>
+								<% } %>	
+								<%
+								var x = NumerodePacientesLocal.length
+								var y = locais[i].NumeroLeitos
+
+								var result = y-x
+								
+								%>
+								<span class="noticia_data"> Número de Leitos Disponiveis: <%=result %></span>
+								
+								
 		    					<p class="noticia_resumo"></p>
 								
 		    				</div>

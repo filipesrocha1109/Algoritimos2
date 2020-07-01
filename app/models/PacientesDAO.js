@@ -4,7 +4,7 @@ function PacientesDAO(connection){
 
 
 PacientesDAO.prototype.getPacientes = function( callback ){
-    this._connection.query( 'SELECT * FROM Pacientes ORDER BY CreatedOnPaciente DESC;' , callback ); 
+    this._connection.query( 'SELECT * FROM Pacientes ORDER BY NomePaciente ASC;' , callback ); 
 }
 
 PacientesDAO.prototype.getPaciente = function(Paciente, callback ){

@@ -20,7 +20,7 @@ module.exports.paciente = function(application, req, res){
     
         LocaisDAO.selectLocais( function(error,result){
             var selects = result
-            console.log(selects)
+            //console.log(selects)
     
             PacientesDAO.getPaciente(Paciente.IDPaciente, function(error,result){
 
