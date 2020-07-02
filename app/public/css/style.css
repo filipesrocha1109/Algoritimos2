@@ -43,6 +43,7 @@ a:hover{
 	text-align: center;
 	background:#FFF;
 	padding:20px;
+	max-width: 100%;
 }
 
 .form-group{
@@ -95,15 +96,19 @@ a:hover{
 }
 
 .btn-add-local{
-	margin-left: 11%;
+	margin-left:33%;
 	background-color: rgb(47, 108, 221);
 	color: white;
+	width: 230px;
+	margin-bottom: 10px;
 }
 
 .btn-add-paciente{
-	margin-left: 11%;
+	margin-left:33%;
 	background-color: rgb(47, 108, 221);
 	color: white;
+	width: 230px;
+	margin-bottom: 10px;
 }
 
 .statistica{
@@ -113,4 +118,8 @@ a:hover{
 
 .status{
 	padding-left: 30px;
+}
+
+.nav li{
+	margin-top: 15px;
 }

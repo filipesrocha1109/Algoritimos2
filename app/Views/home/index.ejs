@@ -30,7 +30,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					
-					<img src="images/logo.png" style="margin-top:2px;"/>
+					<img src="images/coronavirus-covid-19.jpg" style="margin-top: 2px;height: 78px;	margin-bottom: 2px;"/>
 				</div>
 
 				<div id="navbar" class="navbar-collapse collapse">
@@ -93,6 +93,17 @@
 				%>
 				<%=statusrecuperado.length%>	
 				</P>
+				<P>MORTOS: 
+					<%
+						var statusmorto = []
+						for(i=0;i<pacientes.length; i++){
+							if(pacientes[i].StatusPaciente == 'MORTO'){
+								statusmorto.push(pacientes[i].IDPaciente)
+							}
+						}			
+					%>
+					<%=statusmorto.length%>	
+					</P>
 			</div>
 			<div>
 				<h2> BAIRROS</h2>

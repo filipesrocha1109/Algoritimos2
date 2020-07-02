@@ -30,7 +30,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					
-					<img src="images/logo.png" style="margin-top:2px;"/>
+					<img src="images/coronavirus-covid-19.jpg" style="margin-top: 2px;height: 78px;	margin-bottom: 2px;"/>
 				</div>
 
 				<div id="navbar" class="navbar-collapse collapse">
@@ -43,7 +43,13 @@
 				</div>
 			</div>
 		</nav>
-
+		<% if(login){%>
+			<div class="container" >
+				<a href="/addPaciente" > 
+					<button class="btn btn-default btn-add-paciente">Adicionar Paciente</button>
+				</a>
+			</div>
+			<%}%>
 
 	    <div class="container">
 			<% if(pacientes.length > 0){ %>
@@ -62,13 +68,7 @@
 				<% } %>				
 			<% } %>
 		</div>
-		<% if(login){%>
-		<div class="container" >
-			<a href="/addPaciente" > 
-				<button class="btn btn-default btn-add-paciente">Adicionar Paciente</button>
-			</a>
-		</div>
-		<%}%>
+		
 	
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
