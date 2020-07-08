@@ -143,8 +143,8 @@
 
 		<div id=statistica class=statistica>	
 			
-			<div>
-				<h2> BAIRROS</h2>
+			<div class="statisticaP">
+				<h2    style="margin-left: 244px;" > Bairros</h2>
 				<%
 				var bairros = []
 				for(var i=0;i<pacientes.length;i++){
@@ -159,7 +159,10 @@
 				
 				for(var i=0; i<bairros.length; i++){
 				%>
-					<p><%=bairros[i]%>					
+					<p style="    margin-left: 150px;">
+						<img src="images/localizacao.png" style="width: 30px;margin-top: 15px;margin-left: 10px;"/>
+						<bairro style="margin-top: 10px;"><b><%=bairros[i]%></b>
+										
 					
 				<%	
 					var NumeroPorBairros = []
@@ -168,8 +171,11 @@
 							NumeroPorBairros.push(pacientes[i].IDPaciente)
 						}
 					}					
-					%> <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					casos: <%=NumeroPorBairros.length%> <br></p> <%
+					%> 
+					<br>Casos : <%=NumeroPorBairros.length%> 
+					
+				</bairro>
+					</p> <%
 
 				}
 				
@@ -177,10 +183,12 @@
 
 
 			</div>
-			<div>
-			<h2> HOSPITAIS</h2>
+			<div class="statisticaP">
+			<h2> Hospitais</h2>
 			<% for(i=0;i<locais.length; i++){%>	
-				<p><%=locais[i].NomeLocal%>
+				<p style="margin-left: -88px;">
+					<img src="images/hospital.png" style="width: 30px;margin-top: 15px;margin-left: 10px;"/>
+					<hospital style="margin-top: 10px;"><b><%=locais[i].NomeLocal%></b>
 				
 					<%	
 					var NumeroPorHospitais = []
@@ -189,13 +197,20 @@
 							NumeroPorHospitais.push(pacientes[j].IDPaciente)
 						}
 					}					
-					%> <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					casos: <%=NumeroPorHospitais.length%> <br></p> <%
+					%> 
+					<br>Casos : <%=NumeroPorHospitais.length%> 
+				
+				</hospital>
+				</p> <%
 
 				}
 				
 				%>
-			</div>	
+			</div>
+		</div>	
+			<footer>
+
+			</footer>	
 	
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
