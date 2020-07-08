@@ -21,20 +21,9 @@
 	<body>
 
 		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
-					<img src="images/coronavirus-covid-19.jpg" style="margin-top: 2px;height: 78px;	margin-bottom: 2px;"/>
-				</div>
-
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
+			<div class="container" style="margin: 0;padding: 0;">
+				<div id="navbar" >
+					<ul class="nav navbar-nav navbar-left" >
 						<li><a href="/">HOME</a></li>
 						<% if(login){%>
 						<li><a href="/logout">SAIR</a></li>
@@ -43,14 +32,29 @@
 						<%}%>
 					</ul>
 				</div>
+				<div class="navbar-header">					
+					<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
+				</div>
+
+				
 			</div>
 		</nav>
-		<h1 style="text-align: center;">Central do covid</h1>
-		<div id=statistica class=statistica>	
-			<div class="status">
-				<h2> STATUS </h2>
-				<p>CASOS :<%=pacientes.length%></p>
-				<P>DOMICILIAR:
+		<h1 style="text-align: center;">Central do covid-19</h1>
+		
+		<div class="status">
+			
+			<p class="statusP" >
+				<img src="images/virus.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				Confirmados 
+				<br>
+				<b><%=pacientes.length%></b>
+			</p>
+
+			<P class="statusP" >
+				<img src="images/casa.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				Domiciliar
 				<%
 					var statusDocmicilar = []
 					for(i=0;i<pacientes.length; i++){
@@ -59,8 +63,14 @@
 						}
 					}			
 				%>
-				<%=statusDocmicilar.length%></P>
-				<P>HOSPITALIZADO:
+				<br>
+				<b><%=statusDocmicilar.length%></b>
+			
+			</P>
+			<P class="statusP" >
+				<img src="images/estetoscopio.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				Hospitalziado
 				<%
 					var statusHospitalizado = []
 					for(i=0;i<pacientes.length; i++){
@@ -69,9 +79,13 @@
 						}
 					}			
 				%>
-				<%=statusHospitalizado.length%>
-				</P>
-				<P>UTI:
+				<br>
+				<b><%=statusHospitalizado.length%></b>
+			</P>
+			<P class="statusP" >
+				<img src="images/uti.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				UTI
 				<%
 					var statusuti = []
 					for(i=0;i<pacientes.length; i++){
@@ -80,9 +94,13 @@
 						}
 					}			
 				%>
-				<%=statusuti.length%>
-				</P>
-				<P>RECUPERADOS: 
+				<br>
+				<b><%=statusuti.length%></b>				
+			</P>
+			<P class="statusP" >
+				<img src="images/recuperado.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				Recuperados
 				<%
 					var statusrecuperado = []
 					for(i=0;i<pacientes.length; i++){
@@ -91,20 +109,28 @@
 						}
 					}			
 				%>
-				<%=statusrecuperado.length%>	
-				</P>
-				<P>MORTOS: 
-					<%
-						var statusmorto = []
-						for(i=0;i<pacientes.length; i++){
-							if(pacientes[i].StatusPaciente == 'MORTO'){
-								statusmorto.push(pacientes[i].IDPaciente)
-							}
-						}			
-					%>
-					<%=statusmorto.length%>	
-					</P>
-			</div>
+				<br>
+				<b><%=statusrecuperado.length%></b>						
+			</P>
+			<P class="statusP" >
+				<img src="images/morte.png" style="width: 50px;margin-top: 15px;"/>
+				<br>
+				Mortos 
+				<%
+					var statusmorto = []
+					for(i=0;i<pacientes.length; i++){
+						if(pacientes[i].StatusPaciente == 'MORTO'){
+							statusmorto.push(pacientes[i].IDPaciente)
+						}
+					}			
+				%>
+				<br>
+				<b><%=statusmorto.length%></b>					
+			</P>
+		</div>
+
+		<div id=statistica class=statistica>	
+			
 			<div>
 				<h2> BAIRROS</h2>
 				<%

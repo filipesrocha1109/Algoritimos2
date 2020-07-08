@@ -117,7 +117,21 @@ a:hover{
 }
 
 .status{
-	padding-left: 30px;
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 72px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.statusP{
+	background-color: #cfcfcf;	
+    text-align: center;
+    border-radius: 7px;
+    height: 117px;
+    margin: 15px;
+	margin-top: 0;
+	font-size: 16px;
 }
 
 .nav li{
