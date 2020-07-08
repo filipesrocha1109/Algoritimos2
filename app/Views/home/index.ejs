@@ -20,25 +20,37 @@
 
 	<body>
 
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container" style="margin: 0;padding: 0;">
-				<div id="navbar" >
-					<ul class="nav navbar-nav navbar-left" >
-						<li><a href="/">HOME</a></li>
-						<% if(login){%>
-						<li><a href="/logout">SAIR</a></li>
-						<%}else{%>
-						<li><a href="/admin">LOGIN</a></li>
-						<%}%>
-					</ul>
-				</div>
-				<div class="navbar-header">					
-					<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
-				</div>
+		<input type="checkbox" name="" id="check">
+		<label id="icone" for="check"><img src="images/icone.png"> </label>
+		
+		<div class="barra">
+			<nav>
+				<a href="/"><div class="link">Home</div></a>
+				<% if(login){%>
+					<div class="addMenu" >
+						<a href="/pacientes" style="color: #e9f4f9;">Pacientes </a>
+						<a href="/addPaciente" style="float: right;margin-top: -3px;"><img src="images/mais.png" style="width: 30px;"> </a> 
+					</div>
 
-				
-			</div>
-		</nav>
+				<%}%>
+				<div class="addMenu" >
+					<a href="/locais" style="color: #e9f4f9;">Locais </a>
+					<% if(login){%>
+					<a href="/addlocal" style="float: right;margin-top: -3px;"><img src="images/mais.png" style="width: 30px;"> </a> 
+					<%}%>
+				</div>
+				<% if(login){%>
+					<a href="/logout"><div class="link">Sair</div></a>
+				<%}else{%>
+					<a href="/admin"><div class="link">Login</div></a>
+				<%}%>
+
+			</nav>
+	
+		</div>
+		<div class="logo">
+			<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
+		</div>
 		<h1 style="text-align: center;">Central do covid-19</h1>
 		
 		<div class="status">
@@ -184,16 +196,6 @@
 				
 				%>
 			</div>	
-		</div>
-	    	<div class="row ver_mais">
-	    		<a href="locais"> <button type="button" class="btn btn-default">Ver todas locais de atendimento</button></a>
-			</div>
-			<%if(login){%>
-			<div class="row ver_mais">
-	    		<a href="pacientes"><button type="button" class="btn btn-default">Ver todos pacientes</button></a>
-	    	</div>
-			<% } %>
-	    </div>
 	
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	

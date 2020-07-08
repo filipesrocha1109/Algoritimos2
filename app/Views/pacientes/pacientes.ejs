@@ -20,36 +20,37 @@
 
 	<body>
 
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
-					<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
-				</div>
+		<input type="checkbox" name="" id="check">
+		<label id="icone" for="check"><img src="images/icone.png"> </label>
+		
+		<div class="barra">
+			<nav>
+				<a href="/"><div class="link">Home</div></a>
+				<% if(login){%>
+					<div class="addMenu" >
+						<a href="/pacientes" style="color: #e9f4f9;">Pacientes </a>
+						<a href="/addPaciente" style="float: right;margin-top: -3px;"><img src="images/mais.png" style="width: 30px;"> </a> 
+					</div>
 
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">HOME</a></li>
-						<% if(login){%>
-							<li><a href="/logout">SAIR</a></li>	
-						<%}%>
-					</ul>
+				<%}%>
+				<div class="addMenu" >
+					<a href="/locais" style="color: #e9f4f9;">Locais </a>
+					<% if(login){%>
+					<a href="/addlocal" style="float: right;margin-top: -3px;"><img src="images/mais.png" style="width: 30px;"> </a> 
+					<%}%>
 				</div>
-			</div>
-		</nav>
-		<% if(login){%>
-			<div class="container" >
-				<a href="/addPaciente" > 
-					<button class="btn btn-default btn-add-paciente">Adicionar Paciente</button>
-				</a>
-			</div>
-			<%}%>
+				<% if(login){%>
+					<a href="/logout"><div class="link">Sair</div></a>
+				<%}else{%>
+					<a href="/admin"><div class="link">Login</div></a>
+				<%}%>
+
+			</nav>
+	
+		</div>
+		<div class="logo" style="margin-bottom: 20px;">
+			<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
+		</div>
 
 	    <div class="container">
 			<% if(pacientes.length > 0){ %>

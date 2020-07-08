@@ -20,31 +20,28 @@
 
 	<body>
 
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
-					<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
-				</div>
+		<input type="checkbox" name="" id="check">
+		<label id="icone" for="check"><img src="images/icone.png"> </label>
+		
+		<div class="barra">
+			<nav>
+				<a href="/"><div class="link">Home</div></a>
+				<% if(login){%>
+					<a href="/pacientes"><div class="link">Pacientes</div></a>
+				<%}%>
+				<a href="/locais"><div class="link">Locais</div></a>
+				<% if(login){%>
+					<a href="/logout"><div class="link">Sair</div></a>
+				<%}else{%>
+					<a href="/admin"><div class="link">login</div></a>
+				<%}%>
 
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">HOME</a></li>
-						<% if(login){%>
-							<li><a href="/logout">SAIR</a></li>	
-						<%}else{%>
-							<li><a href="/admin">LOGIN</a></li>	
-						<%}%>
-					</ul>
-				</div>
-			</div>
-		</nav>
+			</nav>
+	
+		</div>
+		<div class="logo">
+			<img src="images/mascara.png" style="margin-top: 2px;height: 72px;	margin-bottom: 2px;margin-left: 50%;margin-left: 38vw;"/>
+		</div>
 
 
 	    <div class="container">
