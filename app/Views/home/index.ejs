@@ -188,7 +188,7 @@
 			<% for(i=0;i<locais.length; i++){%>	
 				<p style="margin-left: -88px;">
 					<img src="images/hospital.png" style="width: 30px;margin-top: 15px;margin-left: 10px;"/>
-					<hospital style="margin-top: 10px;"><b><%=locais[i].NomeLocal%></b>
+					<hospital style="margin-top: 10px;"><b><a href="local?IDLocal=<%= locais[i].IDLocal %>" style="text-decoration: none;color:#333;"><%=locais[i].NomeLocal%></b></a>
 				
 					<%	
 					var NumeroPorHospitais = []
